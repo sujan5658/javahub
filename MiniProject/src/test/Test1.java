@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+import javax.swing.JOptionPane;
 import lib.Global;
 public class Test1 implements ActionListener {
     JFrame frame;
@@ -171,6 +172,36 @@ public class Test1 implements ActionListener {
         this.calculateDivision();
         this.calculateRemarks();
     }
+    private boolean checkValidity(){
+        if(this.id==0){
+            JOptionPane.showMessageDialog(null,"ID == null","ID cannot be empty..!!",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else{
+            if(this.name.equals("")){
+                JOptionPane.showMessageDialog(null,"Name == ????","Name Field is empty..!!!",JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            else{
+                if(this.grade.equals("")){
+                    JOptionPane.showMessageDialog(null,"Grade == ????","Grade Field is empty.!!",JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                else{
+                    if(this.section.equals("")){
+                        JOptionPane.showMessageDialog(null,"Section == ????","Section Field is empty.!!",JOptionPane.ERROR_MESSAGE);
+                        return false;
+                    }
+                    else{
+                        if(this.mark1==0.0){
+                            JOptionPane.showMessageDialog(null,"Mark1 == ????","Section Field is empty.!!",JOptionPane.ERROR_MESSAGE);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource().equals(btn_calc)){
@@ -182,6 +213,7 @@ public class Test1 implements ActionListener {
             this.mark2 = Float.parseFloat(txt_6.getText());
             this.mark3 = Float.parseFloat(txt_7.getText());
             this.mark4 = Float.parseFloat(txt_8.getText());
+            
             this.processResult();
             txt_9.setText(Float.toString(this.total));
             txt_10.setText(Float.toString(this.avg));
